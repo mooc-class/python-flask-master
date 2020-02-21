@@ -1,0 +1,25 @@
+{% extends "common/layout.html" %}
+{% block content %}
+<div class="row">
+    <div class="col-lg-12">
+        排序： <a href="{{ buildUrl('/?order=lastest') }}" class="btn btn-link">最新</a> <a href="{{ buildUrl('/?order=hot') }}" class="btn btn-link">热门</a>
+    </div>
+</div>
+<div class="row" style="margin:10px 0 ;">
+    {% if data %}
+    {% for item in data %}
+    <div class="col-md-2">
+        <a  class="thumbnail" href="{{ '%s?id=%s' | format( buildUrl('/info'),item.id) }}">
+            <img style="width: 100%;height:260px; " src="{{ item.cover_pic | safe }}">
+            <div class="caption">
+                <h3 style="overflow: hidden;text-overflow: ellipsis;display:-webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp:1;">
+                    {{ item.name | safe }}</h3>
+                <p>{{ item.source | safe }} | {{ item.pub_date.strftime("%Y-%m-%d") | safe }}</p>
+            </div>
+        </a>
+    </div>
+    {% endfor %}
+    {% endif %}
+</div>
+{% include 'common/pagenation.html' %}
+{% endblock %}

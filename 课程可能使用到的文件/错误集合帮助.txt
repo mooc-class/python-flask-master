@@ -1,0 +1,12 @@
+安装完Pycharm，启动时碰到"failed to load jvm dll"的解决方案
+今天安装完系统，配置pycharm的环境的时候，启动pycharm时，碰到"failed to load jvm dll"的错误，
+
+下面给出其解决方案：
+
+安装Microsoft Visual C++ 2010 Redistributable Package
+
+32 bit: http://www.microsoft.com/download/en/details.aspx?id=5555
+
+64 bit: http://www.microsoft.com/download/en/details.aspx?id=14632
+
+然后再运行pycharm

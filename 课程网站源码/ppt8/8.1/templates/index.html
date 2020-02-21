@@ -1,0 +1,21 @@
+{% extends "common/layout.html" %}
+{% block content %}
+hello I Love Imooc
+<p>var name = {{ name }}</p>
+<p>
+    {% if user %}
+    {{ user.nickname }} 联系QQ:{{  user.qq }} 主页:{{ user.home_page }}
+    {% endif %}
+</p>
+<p>
+    {% for tmp_num in num_list %}
+    {{ tmp_num }}
+    {% endfor %}
+</p>
+<p> flask 查询数据库</p>
+<p>
+    {% for item in result %}
+    {{ item['User'] }}
+    {% endfor %}
+</p>
+{% endblock %}

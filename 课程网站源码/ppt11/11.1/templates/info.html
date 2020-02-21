@@ -1,0 +1,46 @@
+{% extends "common/layout.html" %}
+{% block content %}
+<div class="row">
+    <div class="page-header">
+        <h1>{{ info.name | safe }} <a class="pull-right" href="{{buildUrl('/')}}">返回列表</a></h1>
+    </div>
+    <div class="row">
+        <div class="col-lg-4">
+            <img class="img-thumbnail" src="{{ info.cover_pic | safe }}">
+        </div>
+        <div class="col-lg-8">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <p>更新：{{ info.pub_date | safe }}</p>
+                    <p>类型：{{ info.classify | safe }}</p>
+                    <p>主演：{{ info.actor | safe }}</p>
+                    <p>{{ info.desc | safe }}</p>
+                    <p>下载地址：{{ info.magnet_url | safe }}</p>
+                    <p>原地址：<a target="_blank" href="{{ info.url | safe }}">{{ info.url | safe }}</a></p>
+                </div>
+
+                <!-- List group -->
+                <ul class="list-group">
+                    <li class="list-group-item">随机推荐</li>
+                    <li class="list-group-item">
+                        <div class="row">
+                            {% for item in recommend_list %}
+                            <div class="col-lg-3">
+                                <a class="thumbnail" href="{{ '%s?id=%s' | format( buildUrl('/movie/info'),item.id) }}">
+                                    <img style="width: 100%;height:150px; "
+                                         src="{{ item.cover_pic | safe }}">
+                                    <div class="caption">
+                                        <h3 style="overflow: hidden;text-overflow: ellipsis;display:-webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp:1;">
+                                            {{ item.name | safe }}</h3>
+                                    </div>
+                                </a>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

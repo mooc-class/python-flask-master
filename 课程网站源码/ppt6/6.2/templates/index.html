@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+hello I Love Imooc
+<p>var name = {{ name }}</p>
+<p>
+    {% if user %}
+    {{ user.nickname }} 联系QQ:{{  user.qq }} 主页:{{ user.home_page }}
+    {% endif %}
+</p>
+<p>
+    {% for tmp_num in num_list %}
+    {{ tmp_num }}
+    {% endfor %}
+</p>
+</body>
+</html>

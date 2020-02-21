@@ -1,0 +1,31 @@
+Linux CentOS安装Nginx
+
+添加CentOS 7 Nginx yum资源库
+	sudo rpm -Uvh http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm
+	sudo yum install -y nginx
+
+
+Nginx + uwsgi的配置
+
+server {
+	listen 80;
+	server_name movie.54php.cn;
+
+	location /static {
+		alias  /home/www/ppt12/12.1/static/;
+	}
+
+	location / {
+		try_files $uri @yourapplication;
+	}
+
+    location @yourapplication {
+        include uwsgi_params;
+        uwsgi_pass unix:/tmp/logs/movie.sock;
+        uwsgi_read_timeout 1800;
+        uwsgi_send_timeout 300;
+    }
+}
+
+
+如果nginx + uwsgi 配置之后访问是502 等500 错误 。试试 setenforce 0

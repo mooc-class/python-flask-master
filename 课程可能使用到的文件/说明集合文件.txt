@@ -1,0 +1,2 @@
+自动生成model的语法如下：
+flask-sqlacodegen "mysql://root:123456@127.0.0.1/movie_cat" --tables user --outfile "common/models/user.py"  --flask
